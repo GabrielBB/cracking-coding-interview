@@ -1,0 +1,28 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "algorithms",
+                "projectName": "algorithms",
+                "workingDirectory": "c:\\Users\\Gabriel Brito\\Desktop\\algorithms",
+                "args": [],
+                "vmargs": [],
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "algorithms",
+                "projectName": "algorithms",
+                "workingDirectory": "c:\\Users\\Gabriel Brito\\Desktop\\algorithms",
+                "args": [],
+                "vmargs": [],
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
