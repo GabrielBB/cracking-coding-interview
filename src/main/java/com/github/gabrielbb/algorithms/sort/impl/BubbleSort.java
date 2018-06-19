@@ -4,22 +4,18 @@ import com.github.gabrielbb.algorithms.sort.Sortable;
 
 public class BubbleSort implements Sortable {
 
-    public void sort(int[] array) {
-        boolean sorted = true;
+    private void swap(int[] array, int one, int two) {
+        if (array[one] > array[two]) {
+            int temp = array[one];
 
-        while (sorted) {
-            sorted = false;
-            for (int i = 1; i < array.length; i++) {
-
-                if (array[i] < array[i - 1]) {
-                    int temp = array[i - 1];
-
-                    array[i - 1] = array[i];
-                    array[i] = temp;
-                    sorted = true;
-                }
-            }
+            array[one] = array[two];
+            array[two] = temp;
         }
+    }
 
+    public void sort(int[] array) {
+        for (int out = array.length - 1; out > 1; out--)
+            for (int i = 0; i < out; i++)
+                swap(array, i, i + 1);
     }
 }

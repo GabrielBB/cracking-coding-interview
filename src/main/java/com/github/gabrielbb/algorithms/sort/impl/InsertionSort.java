@@ -19,5 +19,4 @@ public class InsertionSort implements Sortable {
             array[curIn] = temp;
         }
     }
-
 }
