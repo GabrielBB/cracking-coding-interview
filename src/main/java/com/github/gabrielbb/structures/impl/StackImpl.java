@@ -22,6 +22,7 @@ public class StackImpl<T> implements Stack<T> {
         return true;
     }
 
+    @SuppressWarnings("unchecked")
     public T peek() {
         if (isEmpty()) {
             throw new EmptyStackException();
