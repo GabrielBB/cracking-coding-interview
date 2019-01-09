@@ -8,9 +8,9 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class SearchTests {
+public class SearchTest {
 
-    private final int[] array = new int[]{10, 12, 25, 47, 120, 121, 122, 178, 199};
+    private final int[] array = new int[] { 10, 12, 25, 47, 120, 121, 122, 178, 199 };
 
     @Test
     public void testBinarySearch() {

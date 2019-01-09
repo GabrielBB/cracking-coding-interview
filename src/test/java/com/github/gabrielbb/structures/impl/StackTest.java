@@ -8,7 +8,7 @@ import com.github.gabrielbb.structures.impl.StackImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class StackTests {
+public class StackTest {
 
     @Test(expected = EmptyStackException.class)
     public void testStack() {

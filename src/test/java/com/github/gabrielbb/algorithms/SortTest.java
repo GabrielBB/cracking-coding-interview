@@ -9,7 +9,7 @@ import com.github.gabrielbb.algorithms.sort.impl.InsertionSort;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SortTests {
+public class SortTest {
 
     @Test
     public void testBubbleSort() {

@@ -5,7 +5,7 @@ import com.github.gabrielbb.algorithms.assignments.codecompilation.FailedCompila
 
 import org.junit.Test;
 
-public class CodeCompilerTests {
+public class CodeCompilerTest {
 
     @Test
     public void testCorrectCode() throws Exception {
