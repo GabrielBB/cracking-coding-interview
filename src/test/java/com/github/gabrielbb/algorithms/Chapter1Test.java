@@ -1,11 +1,10 @@
 package com.github.gabrielbb.algorithms;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.github.gabrielbb.algorithms.assignments.chapter1.IsUnique;
+import com.github.gabrielbb.algorithms.assignments.chapter1.OneAway;
 import com.github.gabrielbb.algorithms.assignments.chapter1.PalindromePermutation;
 import com.github.gabrielbb.algorithms.assignments.chapter1.Permutation;
 
@@ -37,5 +36,18 @@ public class Chapter1Test {
         assertTrue(PalindromePermutation.isPalondrimePermutation("Papa"));
         assertFalse(PalindromePermutation.isPalondrimePermutation(""));
         assertFalse(PalindromePermutation.isPalondrimePermutation("z"));
+    }
+
+    @Test
+    public void testOneAway() {
+        assertFalse(OneAway.isOneAway("pale", "bake")); // Edit 2 chars
+        assertTrue(OneAway.isOneAway("pale", "pake")); // Edit 1 char
+
+        assertTrue(OneAway.isOneAway("pale", "_pale")); // // Added 1 char
+        assertFalse(OneAway.isOneAway("pale", "_paXle")); // // Added 2 chars
+        assertTrue(OneAway.isOneAway("pale", "paleX")); // // Added 1 chars at the end
+
+        assertTrue(OneAway.isOneAway("pale", "ple")); // // Added 1 chars at the end
+        assertFalse(OneAway.isOneAway("pale", "le")); // // Added 2 chars at the end
     }
 }
