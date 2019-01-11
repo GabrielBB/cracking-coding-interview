@@ -1,5 +1,6 @@
 package com.github.gabrielbb.algorithms;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -7,6 +8,7 @@ import com.github.gabrielbb.algorithms.assignments.chapter1.IsUnique;
 import com.github.gabrielbb.algorithms.assignments.chapter1.OneAway;
 import com.github.gabrielbb.algorithms.assignments.chapter1.PalindromePermutation;
 import com.github.gabrielbb.algorithms.assignments.chapter1.Permutation;
+import com.github.gabrielbb.algorithms.assignments.chapter1.StringCompression;
 
 import org.junit.Test;
 
@@ -49,5 +51,13 @@ public class Chapter1Test {
 
         assertTrue(OneAway.isOneAway("pale", "ple")); // // Added 1 chars at the end
         assertFalse(OneAway.isOneAway("pale", "le")); // // Added 2 chars at the end
+    }
+
+    @Test
+    public void testStringCompression() {
+        assertEquals("a3c3", StringCompression.compress("aaaccc"));
+        assertEquals("a", StringCompression.compress("a"));
+        assertEquals("aa", StringCompression.compress("aa"));
+        assertEquals("f1x2h4", StringCompression.compress("fxxhhhh"));
     }
 }
