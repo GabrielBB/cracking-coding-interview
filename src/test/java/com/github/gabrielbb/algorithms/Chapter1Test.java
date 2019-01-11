@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.github.gabrielbb.algorithms.assignments.chapter1.IsUnique;
+import com.github.gabrielbb.algorithms.assignments.chapter1.PalindromePermutation;
 import com.github.gabrielbb.algorithms.assignments.chapter1.Permutation;
 
 import org.junit.Test;
@@ -27,5 +28,14 @@ public class Chapter1Test {
         assertTrue(Permutation.isPermutation("KELOKE", "KKOLEE"));
         assertFalse(Permutation.isPermutation("messaka[p[askdge", "sadasdsadsdasd"));
         assertFalse(Permutation.isPermutation("", "  "));
+    }
+
+    @Test
+    public void testPalindromePermutation() {
+        assertTrue(PalindromePermutation.isPalondrimePermutation("Tact Coa"));
+        assertFalse(PalindromePermutation.isPalondrimePermutation("Tact Co"));
+        assertTrue(PalindromePermutation.isPalondrimePermutation("Papa"));
+        assertFalse(PalindromePermutation.isPalondrimePermutation(""));
+        assertFalse(PalindromePermutation.isPalondrimePermutation("z"));
     }
 }
