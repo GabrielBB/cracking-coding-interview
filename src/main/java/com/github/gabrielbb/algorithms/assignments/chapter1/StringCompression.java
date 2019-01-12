@@ -9,23 +9,18 @@ public class StringCompression {
         }
 
         final StringBuilder compressed = new StringBuilder();
-        int onHoldCount = 1;
-        char charOnHold = text.charAt(0);
+        int onHoldCount = 0;
 
-        for (int i = 1; i < text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
 
             char currentChar = text.charAt(i);
-            boolean ending = i == text.length() - 1;
+            onHoldCount++;
             
-            if (currentChar != charOnHold || ending) {
-                compressed.append(charOnHold);
-                compressed.append(ending ? onHoldCount + 1 : onHoldCount);
-                onHoldCount = 1;
-            } else {
-                onHoldCount++;
+            if ((i == text.length() - 1) || currentChar != text.charAt(i + 1)) {
+                compressed.append(currentChar);
+                compressed.append(onHoldCount);
+                onHoldCount = 0;
             }
-
-            charOnHold = currentChar;
         }
 
         return compressed.length() > text.length() ? text : compressed.toString();
