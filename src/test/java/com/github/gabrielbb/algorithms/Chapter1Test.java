@@ -11,6 +11,7 @@ import com.github.gabrielbb.algorithms.assignments.chapter1.OneAway;
 import com.github.gabrielbb.algorithms.assignments.chapter1.PalindromePermutation;
 import com.github.gabrielbb.algorithms.assignments.chapter1.Permutation;
 import com.github.gabrielbb.algorithms.assignments.chapter1.StringCompression;
+import com.github.gabrielbb.algorithms.assignments.chapter1.StringRotation;
 import com.github.gabrielbb.algorithms.assignments.chapter1.ZeroMatrix;
 
 import org.junit.Test;
@@ -67,54 +68,39 @@ public class Chapter1Test {
     @Test
     public void testMatrixRotation() {
 
-        int[][] original = new int[][] { 
-            { 1, 2, 3 }, 
-            { 4, 5, 6 }, 
-            { 7, 8, 9 } 
-        };
-        
-        int[][] expected = new int[][] { 
-            { 7, 4, 1 },
-            { 8, 5, 2 },
-            { 9, 6, 3 }
-        };
-        
+        int[][] original = new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
+        int[][] expected = new int[][] { { 7, 4, 1 }, { 8, 5, 2 }, { 9, 6, 3 } };
+
         assertArrayEquals(expected, MatrixRotation.rotate(original));
     }
 
     @Test
     public void testZeroMatrix() {
 
-        var original = new int[][] { 
-            { 1, 2, 3 }, 
-            { 4, 0, 6 }, 
-            { 7, 8, 9 } 
-        };
-        
-        var expected = new int[][] { 
-            { 1, 0, 3 },
-            { 0, 0, 0 },
-            { 7, 0, 9 }
-        };
-        
+        var original = new int[][] { { 1, 2, 3 }, { 4, 0, 6 }, { 7, 8, 9 } };
+
+        var expected = new int[][] { { 1, 0, 3 }, { 0, 0, 0 }, { 7, 0, 9 } };
+
         ZeroMatrix.convert(original);
-        
+
         assertArrayEquals(expected, original);
 
-        original = new int[][] { 
-            { 1, 2, 0 }, 
-            { 4, 5, 6 }, 
-            { 0, 8, 9 } 
-        };
-        
-        expected = new int[][] { 
-            { 0, 0, 0 },
-            { 0, 5, 0 },
-            { 0, 0, 0 }
-        };
-        
+        original = new int[][] { { 1, 2, 0 }, { 4, 5, 6 }, { 0, 8, 9 } };
+
+        expected = new int[][] { { 0, 0, 0 }, { 0, 5, 0 }, { 0, 0, 0 } };
+
         ZeroMatrix.convert(original);
-        
+
         assertArrayEquals(expected, original);
+    }
+
+    @Test
+    public void testStringRotation() {
+        assertTrue(StringRotation.isRotation("erbottlewat", "waterbottle"));
+        assertFalse(StringRotation.isRotation("erzottlewat", "waterbottle"));
+        assertTrue(StringRotation.isRotation("waterbottle", "erbottlewat"));
+        assertFalse(StringRotation.isRotation("   ", "         "));
+        assertTrue(StringRotation.isRotation("", ""));
     }
 }
