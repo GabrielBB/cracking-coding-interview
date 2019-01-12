@@ -1,10 +1,12 @@
 package com.github.gabrielbb.algorithms;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import com.github.gabrielbb.algorithms.assignments.chapter1.IsUnique;
+import com.github.gabrielbb.algorithms.assignments.chapter1.MatrixRotation;
 import com.github.gabrielbb.algorithms.assignments.chapter1.OneAway;
 import com.github.gabrielbb.algorithms.assignments.chapter1.PalindromePermutation;
 import com.github.gabrielbb.algorithms.assignments.chapter1.Permutation;
@@ -59,5 +61,23 @@ public class Chapter1Test {
         assertEquals("a", StringCompression.compress("a"));
         assertEquals("aa", StringCompression.compress("aa"));
         assertEquals("f1x2h4", StringCompression.compress("fxxhhhh"));
+    }
+
+    @Test
+    public void testMatrixRotation() {
+
+        int[][] original = new int[][] { 
+            { 1, 2, 3 }, 
+            { 4, 5, 6 }, 
+            { 7, 8, 9 } 
+        };
+        
+        int[][] expected = new int[][] { 
+            { 7, 4, 1 },
+            { 8, 5, 2 },
+            { 9, 6, 3 }
+        };
+        
+        assertArrayEquals(expected, MatrixRotation.rotate(original));
     }
 }
