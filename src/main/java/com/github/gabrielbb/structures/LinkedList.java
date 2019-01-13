@@ -1,6 +1,6 @@
-package com.github.gabrielbb.structures.impl;
+package com.github.gabrielbb.structures;
 
-public final class LinkedListImpl<T> {
+public final class LinkedList<T> {
 
     public static class Node<T> {
 
@@ -14,7 +14,7 @@ public final class LinkedListImpl<T> {
 
     public Node<T> node;
 
-    public LinkedListImpl(T... dataArray) {
+    public LinkedList(T... dataArray) {
         add(dataArray);
     }
 
@@ -58,10 +58,10 @@ public final class LinkedListImpl<T> {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof LinkedListImpl)) {
+        if (!(obj instanceof LinkedList)) {
             return false;
         }
 
-        return ((LinkedListImpl) obj).toString().equals(this.toString());
+        return ((LinkedList) obj).toString().equals(this.toString());
     }
 }

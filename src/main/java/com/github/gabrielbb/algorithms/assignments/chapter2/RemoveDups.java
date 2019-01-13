@@ -1,17 +1,21 @@
 package com.github.gabrielbb.algorithms.assignments.chapter2;
 
-import com.github.gabrielbb.structures.impl.LinkedListImpl;
+import com.github.gabrielbb.structures.LinkedList;
 
 public class RemoveDups {
 
-    public static void removeDupsWhileSorting(LinkedListImpl<Integer> list) {
+    public static void removeDups(LinkedList<Integer> list) {
+
+    }
+
+    public static void removeDupsWhileSorting(LinkedList<Integer> list) {
 
         var swapped = new boolean[1];
 
         do {
             swapped[0] = false;
 
-            LinkedListImpl.Node<Integer> currentNode = list.node;
+            LinkedList.Node<Integer> currentNode = list.node;
 
             while (currentNode != null) {
 
