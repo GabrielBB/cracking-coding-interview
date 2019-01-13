@@ -1,47 +1,67 @@
 package com.github.gabrielbb.structures.impl;
 
-import java.util.function.Predicate;
+public final class LinkedListImpl<T> {
 
-import com.github.gabrielbb.structures.LinkedList;
+    public static class Node<T> {
 
-public class LinkedListImpl<T> implements LinkedList<T> {
+        public T data;
+        public Node<T> next;
 
-    public Node<T> firstNode, lastNode;
-
-    public Node<T> add(T data) {
-        Node<T> newNode = new Node<>(data);
-
-        if (lastNode != null) {
-            lastNode.next = newNode;
+        private Node(T data) {
+            this.data = data;
         }
-
-        if (firstNode == null) {
-            firstNode = newNode;
-        }
-
-        return lastNode = newNode;
     }
 
-    public Node<T> delete(Predicate<T> predicate) {
+    public Node<T> node;
 
-        if (firstNode != null) {
-            Node<T> currentNode = firstNode;
-            Node<T> prevNode = null;
+    public LinkedListImpl(T... dataArray) {
+        add(dataArray);
+    }
 
-            do {
-                if (predicate.test(currentNode.data)) {
+    public void add(T... dataArray) {
 
-                    if (prevNode != null) {
-                        prevNode.next = currentNode.next;
-                    }
+        Node<T> lastNode = node;
 
-                    return currentNode;
-                }
-
-                prevNode = currentNode;
-            } while ((currentNode = currentNode.next) != null);
+        while (lastNode != null && lastNode.next != null) {
+            lastNode = lastNode.next;
         }
 
-        return null;
+
+        for (T data : dataArray) {
+
+            var newNode = new Node<>(data);
+
+            if (lastNode == null) {
+                node = newNode;
+            } else {
+                lastNode.next = newNode;
+            }
+
+            lastNode = newNode;
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        Node<T> currentNode = node;
+
+        while (currentNode != null) {
+            result.append(currentNode.data);
+            result.append(",");
+            currentNode = currentNode.next;
+        }
+
+        return result.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof LinkedListImpl)) {
+            return false;
+        }
+
+        return ((LinkedListImpl) obj).toString().equals(this.toString());
     }
 }
