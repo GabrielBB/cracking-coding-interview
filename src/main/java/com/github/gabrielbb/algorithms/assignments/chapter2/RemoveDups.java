@@ -6,6 +6,23 @@ public class RemoveDups {
 
     public static void removeDups(LinkedList<Integer> list) {
 
+        LinkedList.Node<Integer> currentNode = list.node;
+
+        while (currentNode != null) {
+
+            LinkedList.Node<Integer> secondPointer = currentNode;
+
+            while(secondPointer != null && secondPointer.next != null) {
+
+                if(secondPointer.next.data.equals(currentNode.data)) {
+                    secondPointer.next = secondPointer.next.next;
+                }
+
+                secondPointer = secondPointer.next;
+            }
+
+            currentNode = currentNode.next;
+        }
     }
 
     public static void removeDupsWhileSorting(LinkedList<Integer> list) {
