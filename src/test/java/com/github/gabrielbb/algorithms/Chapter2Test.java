@@ -3,6 +3,7 @@ package com.github.gabrielbb.algorithms;
 import static org.junit.Assert.assertEquals;
 
 import com.github.gabrielbb.algorithms.assignments.chapter2.KthToLast;
+import com.github.gabrielbb.algorithms.assignments.chapter2.MiddleNodeDeletion;
 import com.github.gabrielbb.algorithms.assignments.chapter2.RemoveDups;
 import com.github.gabrielbb.structures.LinkedList;
 
@@ -60,6 +61,22 @@ public class Chapter2Test {
 
         assertEquals(6, KthToLast.findKthToLast(original, 3));
         assertEquals(8, KthToLast.findKthToLast(original, 1));
-        
+
+    }
+
+    @Test
+    public void testMiddleNodeDeletion() {
+
+        var list = new LinkedList<>(1, 2, 3, 4, 5, 6);
+
+        MiddleNodeDeletion.deleteNode(list.node.next.next);
+
+        assertEquals(new LinkedList<>(1, 2, 4, 5, 6), list);
+
+        list = new LinkedList<>(1, 2, 3, 4, 5);
+
+        MiddleNodeDeletion.deleteNode(list.node.next.next.next);
+
+        assertEquals(new LinkedList<>(1, 2, 3, 5), list);
     }
 }
