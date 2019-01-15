@@ -86,6 +86,10 @@ public class Chapter2Test {
 
         LinkedList<Integer> result = SumLists.sumLists(new LinkedList<>(7, 1, 6), new LinkedList<>(5, 9, 2));
 
-        assertEquals(new LinkedList<>(-1, 2, 1 ,9), result);
+        assertEquals(new LinkedList<>(2, 1 ,9), result);
+
+        result = SumLists.sumLists(new LinkedList<>(7, 1, 6, 2), new LinkedList<>(5, 9, 2));
+
+        assertEquals(new LinkedList<>(2, 1 ,9, 2), result);
     }
 }
