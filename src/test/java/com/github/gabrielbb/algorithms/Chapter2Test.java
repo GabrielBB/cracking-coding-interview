@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import com.github.gabrielbb.algorithms.assignments.chapter2.KthToLast;
 import com.github.gabrielbb.algorithms.assignments.chapter2.MiddleNodeDeletion;
 import com.github.gabrielbb.algorithms.assignments.chapter2.RemoveDups;
+import com.github.gabrielbb.algorithms.assignments.chapter2.SumLists;
 import com.github.gabrielbb.structures.LinkedList;
 
 import org.junit.Test;
@@ -78,5 +79,13 @@ public class Chapter2Test {
         MiddleNodeDeletion.deleteNode(list.node.next.next.next);
 
         assertEquals(new LinkedList<>(1, 2, 3, 5), list);
+    }
+
+    @Test
+    public void testSumLists() {
+
+        LinkedList<Integer> result = SumLists.sumLists(new LinkedList<>(7, 1, 6), new LinkedList<>(5, 9, 2));
+
+        assertEquals(new LinkedList<>(-1, 2, 1 ,9), result);
     }
 }

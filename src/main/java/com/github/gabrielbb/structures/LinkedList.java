@@ -7,7 +7,7 @@ public final class LinkedList<T> {
         public T data;
         public Node<T> next;
 
-        private Node(T data) {
+        public Node(T data) {
             this.data = data;
         }
     }
@@ -16,6 +16,10 @@ public final class LinkedList<T> {
 
     public LinkedList(T... dataArray) {
         add(dataArray);
+    }
+
+    public LinkedList(Node<T> node) {
+        this.node = node;
     }
 
     public void add(T... dataArray) {
