@@ -1,11 +1,10 @@
 package com.github.gabrielbb.algorithms;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import com.github.gabrielbb.algorithms.assignments.chapter2.KthToLast;
-import com.github.gabrielbb.algorithms.assignments.chapter2.MiddleNodeDeletion;
-import com.github.gabrielbb.algorithms.assignments.chapter2.RemoveDups;
-import com.github.gabrielbb.algorithms.assignments.chapter2.SumLists;
+import com.github.gabrielbb.algorithms.assignments.chapter2.*;
 import com.github.gabrielbb.structures.LinkedList;
 
 import org.junit.Test;
@@ -86,14 +85,24 @@ public class Chapter2Test {
 
         LinkedList<Integer> result = SumLists.sumLists(new LinkedList<>(7, 1, 6), new LinkedList<>(5, 9, 2));
 
-        assertEquals(new LinkedList<>(2, 1 ,9), result);
+        assertEquals(new LinkedList<>(2, 1, 9), result);
 
         result = SumLists.sumLists(new LinkedList<>(7, 1, 6, 2), new LinkedList<>(5, 9, 2));
 
-        assertEquals(new LinkedList<>(2, 1 ,9, 2), result);
+        assertEquals(new LinkedList<>(2, 1, 9, 2), result);
 
         result = SumLists.sumLists(new LinkedList<>(7, 0, 0, 9), new LinkedList<>(5, 0, 9));
 
-        assertEquals(new LinkedList<>(2, 1 ,9, 9), result);
+        assertEquals(new LinkedList<>(2, 1, 9, 9), result);
+    }
+
+    @Test
+    public void testPalindrome() {
+
+        assertTrue(Palindrome.isPalindrome(new LinkedList<>("c", "a", "b", "z", "b", "a", "c")));
+        assertTrue(Palindrome.isPalindrome(new LinkedList<>("c", "a", "b", "b", "a", "c")));
+        assertTrue(Palindrome.isPalindrome(new LinkedList<>("c")));
+        assertTrue(Palindrome.isPalindrome(new LinkedList<>()));
+        assertFalse(Palindrome.isPalindrome(new LinkedList<>("c", "a", "z", "z", "b", "a", "c")));
     }
 }
