@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import com.github.gabrielbb.algorithms.assignments.chapter2.*;
 import com.github.gabrielbb.structures.LinkedList;
+import com.github.gabrielbb.structures.LinkedList.Node;
 
 import org.junit.Test;
 
@@ -104,5 +105,18 @@ public class Chapter2Test {
         assertTrue(Palindrome.isPalindrome(new LinkedList<>("c")));
         assertTrue(Palindrome.isPalindrome(new LinkedList<>()));
         assertFalse(Palindrome.isPalindrome(new LinkedList<>("c", "a", "z", "z", "b", "a", "c")));
+    }
+
+    @Test
+    public void testLoopDetection() {
+        var node1 = new Node<>(1);
+        var node2 = new Node<>(1);
+        var node3 = new Node<>(1);
+
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node1;
+
+        assertEquals(LoopDetection.getLoopNode(new LinkedList<>(node1)), node1);
     }
 }
