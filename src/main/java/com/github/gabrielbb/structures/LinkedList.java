@@ -10,6 +10,11 @@ public final class LinkedList<T> {
         public Node(T data) {
             this.data = data;
         }
+
+        @Override
+        public String toString() {
+            return "Value: " + data + " Hash: " + hashCode();
+        }
     }
 
     public Node<T> node;
