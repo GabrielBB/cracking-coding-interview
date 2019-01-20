@@ -27,7 +27,7 @@ public class StackImpl<T> implements Stack<T> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        
+
         return (T) data[currentIndex];
     }
 
