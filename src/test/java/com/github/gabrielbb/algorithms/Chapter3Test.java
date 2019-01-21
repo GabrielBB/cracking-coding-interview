@@ -4,7 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.github.gabrielbb.algorithms.assignments.chapter3.SetOfStacks;
+import com.github.gabrielbb.algorithms.assignments.chapter3.SortStack;
 import com.github.gabrielbb.algorithms.assignments.chapter3.StackMin;
+import com.github.gabrielbb.structures.Stack;
+import com.github.gabrielbb.structures.impl.StackImpl;
 
 import org.junit.Test;
 
@@ -54,5 +57,22 @@ public class Chapter3Test {
         assertEquals(Integer.valueOf(3), stacks.pop());
 
         assertTrue(stacks.isEmpty());
+    }
+
+    @Test
+    public void testSortStack() {
+        Stack<Integer> stack = new StackImpl<>(4);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+
+        SortStack sorter = new SortStack(stack);
+        sorter.sortStack();
+
+        assertEquals(Integer.valueOf(1), stack.pop());
+        assertEquals(Integer.valueOf(2), stack.pop());
+        assertEquals(Integer.valueOf(3), stack.pop());
+        assertEquals(Integer.valueOf(4), stack.pop());
     }
 }
