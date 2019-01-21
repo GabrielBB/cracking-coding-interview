@@ -33,17 +33,7 @@ public class SetOfStacks<T> implements Stack<T> {
         if (currentIndex >= 0 && stacks.get(index).isEmpty()) {
             stacks.remove(index);
             currentIndex--;
-
-            /*if (index == currentIndex) {
-                checkStacks(currentIndex);
-            } else {
-                throw new EmptyStackException();
-            }*/
         }
-
-        /*if (isEmpty()) {
-            throw new EmptyStackException();
-        }*/
     }
 
     @Override
