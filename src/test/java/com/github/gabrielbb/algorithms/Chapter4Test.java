@@ -3,7 +3,9 @@ package com.github.gabrielbb.algorithms;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import com.github.gabrielbb.algorithms.assignments.chapter4.ListOfDepths;
 import com.github.gabrielbb.algorithms.assignments.chapter4.MinimalTree;
+import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.Graph.Node;
 import com.github.gabrielbb.algorithms.assignments.chapter4.RouteBetweenNodes;
 
@@ -37,5 +39,21 @@ public class Chapter4Test {
     @Test
     public void testMinimalTree() {
         MinimalTree.createBinarySearchTree(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
+    }
+
+    @Test
+    public void testListOfDepths() {
+        BinaryTree.Node<Integer> root = new BinaryTree.Node<>(1);
+
+        var second = new BinaryTree.Node<>(2);
+        var third = new BinaryTree.Node<>(3);
+        second.left = third;
+        second.right = third;
+
+        root.left = second;
+        root.right = second;
+
+        var nodesByDepths = ListOfDepths.getNodesByDepths(new BinaryTree<>(root));
+        System.out.print(nodesByDepths);
     }
 }
