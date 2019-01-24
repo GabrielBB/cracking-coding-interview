@@ -9,6 +9,7 @@ import com.github.gabrielbb.algorithms.assignments.chapter4.MinimalTree;
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.Graph.Node;
 import com.github.gabrielbb.algorithms.assignments.chapter4.RouteBetweenNodes;
+import com.github.gabrielbb.algorithms.assignments.chapter4.ValidateBST;
 
 import org.junit.Test;
 
@@ -81,5 +82,19 @@ public class Chapter4Test {
 
         forth.right = new BinaryTree.Node<>(5);
         assertFalse(CheckBalanced.isBalanced(tree));
+    }
+
+    @Test
+    public void testBST() {
+        var tree = new BinaryTree<>(new BinaryTree.Node<>(8));
+        var second = new BinaryTree.Node<>(5);
+        var third = new BinaryTree.Node<>(10);
+        tree.root.left = second;
+        tree.root.right = third;
+
+        second.left = new BinaryTree.Node<>(4);
+        second.right = new BinaryTree.Node<>(6);
+
+        assertTrue(ValidateBST.isBST(tree));
     }
 }
