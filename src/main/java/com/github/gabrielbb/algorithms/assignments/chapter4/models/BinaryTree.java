@@ -12,6 +12,7 @@ public class BinaryTree<T> {
 
         public Node<T> left;
         public Node<T> right;
+        public Node<T> parent;
         public T data;
         public boolean visited;
 
