@@ -13,6 +13,9 @@ import com.github.gabrielbb.algorithms.assignments.chapter4.ValidateBST;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Unit test for simple App.
  */
@@ -30,9 +33,9 @@ public class Chapter4Test {
         var node8 = new Node();
         var node9 = new Node();
 
-        node1.children = new Node[] { node2, node3, node4 };
-        node2.children = new Node[] { node6, node7 };
-        node7.children = new Node[] { node8, node9 };
+        node1.children = List.of(node2, node3, node4);
+        node2.children = List.of(node6, node7);
+        node7.children = List.of(node8, node9);
 
         assertTrue(RouteBetweenNodes.findRoute(node1, node9));
         assertFalse(RouteBetweenNodes.findRoute(node1, node5));

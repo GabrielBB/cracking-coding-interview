@@ -1,5 +1,8 @@
 package com.github.gabrielbb.algorithms.assignments.chapter4.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Graph {
 
     public Node[] nodes;
@@ -7,7 +10,7 @@ public class Graph {
     public static class Node<T> {
 
         public T value;
-        public Node<T>[] children = new Node[0];
+        public List<Node<T>> children = new ArrayList<>();
         public boolean visited;
 
         public Node() {
