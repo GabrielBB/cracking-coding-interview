@@ -1,20 +1,15 @@
 package com.github.gabrielbb.algorithms;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import com.github.gabrielbb.algorithms.assignments.chapter4.CheckBalanced;
-import com.github.gabrielbb.algorithms.assignments.chapter4.ListOfDepths;
-import com.github.gabrielbb.algorithms.assignments.chapter4.MinimalTree;
+import com.github.gabrielbb.algorithms.assignments.chapter4.*;
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.Graph.Node;
-import com.github.gabrielbb.algorithms.assignments.chapter4.RouteBetweenNodes;
-import com.github.gabrielbb.algorithms.assignments.chapter4.ValidateBST;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.*;
 
 /**
  * Unit test for simple App.
@@ -43,7 +38,7 @@ public class Chapter4Test {
 
     @Test
     public void testMinimalTree() {
-        MinimalTree.createBinarySearchTree(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+        MinimalTree.createBinarySearchTree(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
     }
 
     @Test
@@ -99,5 +94,14 @@ public class Chapter4Test {
         second.right = new BinaryTree.Node<>(6);
 
         assertTrue(ValidateBST.isBST(tree));
+    }
+
+    @Test
+    public void testBuildOrder() {
+        var projects = new String[]{"a", "b", "c", "d", "e", "f"};
+        var dependencies = new String[][]{{"a", "d"}, {"f", "b"}, {"b", "d"}, {"f", "a"}, {"d", "c"}};
+
+        String[] result = BuildOrder.getBuildOrder(projects, dependencies);
+        assertArrayEquals(new String[]{"f", "a", "b", "d", "c", "e"}, result);
     }
 }
