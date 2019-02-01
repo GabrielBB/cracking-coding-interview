@@ -7,6 +7,7 @@ import com.github.gabrielbb.algorithms.assignments.chapter4.models.Graph.Node;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -103,5 +104,24 @@ public class Chapter4Test {
 
         String[] result = BuildOrder.getBuildOrder(projects, dependencies);
         assertArrayEquals(new String[]{"f", "a", "b", "d", "c", "e"}, result);
+    }
+
+    @Test
+    public void testWeaver() {
+        var first = new LinkedList<Integer>();
+        first.add(1);
+        first.add(2);
+
+        var second = new LinkedList<Integer>();
+        second.add(3);
+        second.add(4);
+
+        var results = new ArrayList<LinkedList<Integer>>();
+
+        var prefix = new LinkedList<Integer>();
+
+        Weaver.weave(first, second, prefix, results);
+
+        System.out.println(results);
     }
 }
