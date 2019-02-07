@@ -39,7 +39,7 @@ public class Chapter4Test {
 
     @Test
     public void testMinimalTree() {
-        MinimalTree.createBinarySearchTree(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
+        MinimalTree.createBinarySearchTree(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
     }
 
     @Test
@@ -99,11 +99,11 @@ public class Chapter4Test {
 
     @Test
     public void testBuildOrder() {
-        var projects = new String[]{"a", "b", "c", "d", "e", "f"};
-        var dependencies = new String[][]{{"a", "d"}, {"f", "b"}, {"b", "d"}, {"f", "a"}, {"d", "c"}};
+        var projects = new String[] { "a", "b", "c", "d", "e", "f" };
+        var dependencies = new String[][] { { "a", "d" }, { "f", "b" }, { "b", "d" }, { "f", "a" }, { "d", "c" } };
 
         String[] result = BuildOrder.getBuildOrder(projects, dependencies);
-        assertArrayEquals(new String[]{"f", "a", "b", "d", "c", "e"}, result);
+        assertArrayEquals(new String[] { "f", "a", "b", "d", "c", "e" }, result);
     }
 
     @Test
@@ -123,5 +123,20 @@ public class Chapter4Test {
         Weaver.weave(first, second, prefix, results);
 
         System.out.println(results);
+    }
+
+    @Test
+    public void testCheckSubtree() {
+        BinaryTree.Node<Integer> root = new BinaryTree.Node<>(1);
+
+        var second = new BinaryTree.Node<>(2);
+        var third = new BinaryTree.Node<>(3);
+        second.left = third;
+        second.right = third;
+
+        root.left = second;
+        root.right = second;
+
+        assertTrue(CheckSubtree.isSubtree(root, third));
     }
 }
