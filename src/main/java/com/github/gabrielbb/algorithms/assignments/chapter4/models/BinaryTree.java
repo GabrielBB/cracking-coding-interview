@@ -1,31 +1,65 @@
 package com.github.gabrielbb.algorithms.assignments.chapter4.models;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
+
 public class BinaryTree<T> {
 
     public Node<T> root;
-    private int depth = 1;
-    private int nodesInDepth = 0;
+    private int count;
+    private Random random = new Random();
 
     public BinaryTree(Node<T> root) {
         this.root = root;
     }
 
-    public void insert(Node<T> node) {
-        if (nodesInDepth == (depth * 2)) {
-            depth++;
-            nodesInDepth = 0;
-        }
+    public Node<T> getRandomNode() {
+        Queue<Node<T>> queue = new LinkedList<>();
+        queue.add(root);
 
-        insert(node, 1);
+        int curr = 0;
+        int index = random.nextInt(count);
+
+        while (true) {
+            Node<T> currentNode = queue.remove();
+
+            if (curr == index) {
+                return currentNode;
+            }
+
+            if (currentNode != null) {
+                queue.add(currentNode.left);
+                queue.add(currentNode.right);
+            }
+
+            curr++;
+        }
     }
 
-    private boolean insert(Node<T> node, int depth) {
+    public void insert(Node<T> node) {
+        Queue<Node<T>> queue = new LinkedList<>();
+        queue.add(root);
 
-        if (depth == this.depth) {
-            
+        while (!queue.isEmpty()) {
+
+            Node<T> currentNode = queue.remove();
+
+            if (currentNode.left == null) {
+                currentNode.left = node;
+                break;
+            }
+
+            if (currentNode.right == null) {
+                currentNode.right = node;
+                break;
+            }
+
+            queue.add(currentNode.left);
+            queue.add(currentNode.right);
         }
 
-        return false;
+        count++;
     }
 
     public static class Node<T> {
