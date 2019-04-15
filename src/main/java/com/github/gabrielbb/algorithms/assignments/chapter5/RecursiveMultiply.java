@@ -7,6 +7,6 @@ public class RecursiveMultiply {
         int lastA = a % 10;
         int lastB = b % 10;
 
-        
+        return -1;
     }
 }
