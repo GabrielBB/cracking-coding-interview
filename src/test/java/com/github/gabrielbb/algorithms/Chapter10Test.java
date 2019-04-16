@@ -2,6 +2,7 @@ package com.github.gabrielbb.algorithms;
 
 import java.util.Arrays;
 
+import com.github.gabrielbb.algorithms.assignments.chapter10.GroupAnagrams;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedMerge;
 
 import org.junit.Assert;
@@ -11,15 +12,15 @@ public class Chapter10Test {
 
     @Test
     public void testSortedMerge() {
-        final int[] a = new int[5];
+        final var a = new int[5];
         a[0] = 2;
         a[1] = 4;
 
-        final int[] b = new int[] { 1, 1000, 2000 };
+        final var b = new int[] { 1, 1000, 2000 };
 
-        final int[] sorted = a.clone();
-    
-        for(int i = a.length - b.length; i < a.length; i++) {
+        final var sorted = a.clone();
+
+        for (int i = a.length - b.length; i < a.length; i++) {
             sorted[i] = b[i + (b.length - a.length)];
         }
 
@@ -28,5 +29,12 @@ public class Chapter10Test {
         SortedMerge.sort(a, b);
 
         Assert.assertArrayEquals(a, sorted);
+    }
+
+    @Test
+    public void testGroupAnagrams() {
+        var array = new String[] { "casa", "", "perro", "scaa", "__", "dawdas", "oerrp" };
+        GroupAnagrams.sort(array);
+        Assert.assertArrayEquals(new String[] { "casa", "scaa", "perro", "oerrp", "__", "dawdas", "" }, array);
     }
 }
