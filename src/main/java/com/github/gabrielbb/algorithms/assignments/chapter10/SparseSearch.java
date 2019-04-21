@@ -6,14 +6,14 @@ public class SparseSearch {
         return binarySearch(array, string, 0, array.length - 1);
     }
 
-    private static int getNextMid(String[] array, int left, int right) {
+    private static int getNonEmptyMid(String[] array, int left, int right) {
         int mid = (left + right) / 2;
 
-        while (array[mid].equals("") && mid > left) {
+        while (array[mid].isEmpty() && mid > left) {
             mid--;
         }
 
-        while (array[mid].equals("") && mid < right) {
+        while (array[mid].isEmpty() && mid < right) {
             mid++;
         }
 
@@ -25,10 +25,10 @@ public class SparseSearch {
         if (left > right)
             return -1;
 
-        int mid = getNextMid(array, left, right);
+        int mid = getNonEmptyMid(array, left, right);
         String midValue = array[mid];
 
-        if (midValue.equals("") && !string.equals("")) {
+        if (midValue.isEmpty() && !string.isEmpty()) {
             return -1;
         } else if (midValue.compareTo(string) > 0) {
             return binarySearch(array, string, left, mid - 1);
