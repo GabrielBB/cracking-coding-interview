@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import com.github.gabrielbb.algorithms.assignments.chapter10.GroupAnagrams;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedMerge;
+import com.github.gabrielbb.algorithms.assignments.chapter10.SortedSearchNoSize;
+import com.github.gabrielbb.algorithms.assignments.chapter10.SortedSearchNoSize.Listy;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,5 +38,12 @@ public class Chapter10Test {
         var array = new String[] { "casa", "", "perro", "scaa", "__", "dawdas", "oerrp" };
         GroupAnagrams.sort(array);
         Assert.assertArrayEquals(new String[] { "casa", "scaa", "perro", "oerrp", "__", "dawdas", "" }, array);
+    }
+
+    @Test
+    public void testSortedSearchNoSize() {
+        Assert.assertEquals(3, SortedSearchNoSize.search(new Listy(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }), 3));
+        Assert.assertEquals(5, SortedSearchNoSize.search(new Listy(new int[] { 0, 10000, 100000, 200000, 200000, 300000 }), 300000));
+        Assert.assertEquals(3, SortedSearchNoSize.search(new Listy(new int[] { 0, 10000, 100000, 200000, 200000, 300000 }), 200000));
     }
 }
