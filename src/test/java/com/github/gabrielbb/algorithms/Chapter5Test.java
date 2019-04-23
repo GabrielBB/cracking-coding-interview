@@ -1,7 +1,7 @@
 package com.github.gabrielbb.algorithms;
 
-import com.github.gabrielbb.algorithms.assignments.chapter5.RobotGrid;
-import com.github.gabrielbb.algorithms.assignments.chapter5.RobotGrid.Move;
+import com.github.gabrielbb.algorithms.assignments.chapter8.RobotGrid;
+import com.github.gabrielbb.algorithms.assignments.chapter8.RobotGrid.Move;
 
 import org.junit.Test;
 

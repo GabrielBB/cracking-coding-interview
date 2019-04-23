@@ -1,4 +1,4 @@
-package com.github.gabrielbb.algorithms.assignments.chapter5;
+package com.github.gabrielbb.algorithms.assignments.chapter8;
 
 public class MagicIndex {
 

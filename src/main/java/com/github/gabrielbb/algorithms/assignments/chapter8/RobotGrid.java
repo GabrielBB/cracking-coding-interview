@@ -1,6 +1,6 @@
-package com.github.gabrielbb.algorithms.assignments.chapter5;
+package com.github.gabrielbb.algorithms.assignments.chapter8;
 
-import com.github.gabrielbb.algorithms.assignments.chapter5.RobotGrid.Move.Direction;
+import com.github.gabrielbb.algorithms.assignments.chapter8.RobotGrid.Move.Direction;
 
 public class RobotGrid {
 
