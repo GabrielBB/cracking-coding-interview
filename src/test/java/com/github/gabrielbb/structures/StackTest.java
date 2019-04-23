@@ -1,4 +1,4 @@
-package com.github.gabrielbb.structures.impl;
+package com.github.gabrielbb.structures;
 
 import java.util.EmptyStackException;
 
