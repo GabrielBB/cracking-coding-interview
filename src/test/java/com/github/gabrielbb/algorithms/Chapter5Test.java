@@ -1,7 +1,8 @@
 package com.github.gabrielbb.algorithms;
 
-import com.github.gabrielbb.algorithms.assignments.chapter8.RobotGrid;
-import com.github.gabrielbb.algorithms.assignments.chapter8.RobotGrid.Move;
+import static org.junit.Assert.assertEquals;
+
+import com.github.gabrielbb.algorithms.assignments.chapter5.Insertion;
 
 import org.junit.Test;
 
@@ -11,16 +12,8 @@ import org.junit.Test;
 public class Chapter5Test {
 
     @Test
-    public void testRobotGrid() {
-
-        boolean[][] grid = new boolean[3][3];
-
-        Move move = RobotGrid.getRobotPath(grid, 0, 0);
-
-        while(move != null) {
-            System.out.println(move.direction);
-            move = move.next;
-        }
+    public void testInsertion() {
+        assertEquals(0b10001001100, Insertion.insert(0b10000000000, 0b10011, 2, 6));
     }
 
 }
