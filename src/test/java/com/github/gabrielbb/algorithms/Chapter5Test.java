@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import com.github.gabrielbb.algorithms.assignments.chapter5.BinaryToString;
 import com.github.gabrielbb.algorithms.assignments.chapter5.FlipBitToWin;
 import com.github.gabrielbb.algorithms.assignments.chapter5.Insertion;
+import com.github.gabrielbb.algorithms.assignments.chapter5.NextNumber;
 
 import org.junit.Test;
 
@@ -36,5 +37,13 @@ public class Chapter5Test {
     public void flipBitToWin() {
         assertEquals(1, FlipBitToWin.findLongest1Sequence(5));
         assertEquals(8, FlipBitToWin.findLongest1Sequence(1775));
+    }
+
+    @Test
+    public void testNextNumber() {
+        assertEquals(12, NextNumber.findLargestNextNumber(10));
+        assertEquals(20, NextNumber.findLargestNextNumber(12));
+        assertEquals(0, NextNumber.findLargestNextNumber(0));
+        assertEquals(26, NextNumber.findLargestNextNumber(22));
     }
 }
