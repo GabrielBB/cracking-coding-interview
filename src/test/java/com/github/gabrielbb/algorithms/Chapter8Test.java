@@ -18,7 +18,6 @@ public class Chapter8Test {
         Move move = RobotGrid.getRobotPath(grid, 0, 0);
 
         while(move != null) {
-            System.out.println(move.direction);
             move = move.next;
         }
     }
