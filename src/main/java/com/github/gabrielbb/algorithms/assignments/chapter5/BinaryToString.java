@@ -41,7 +41,6 @@ public class BinaryToString {
         }
 
         var binary = new StringBuilder("0.");
-        int count = 0;
 
         while (num != 1) {
             num *= 2;
@@ -56,7 +55,7 @@ public class BinaryToString {
                 binary.append(0);
             }
 
-            if (++count > 32) {
+            if (binary.length() > 32) {
                 return "ERROR";
             }
         }
