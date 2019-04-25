@@ -3,6 +3,7 @@ package com.github.gabrielbb.algorithms;
 import static org.junit.Assert.assertEquals;
 
 import com.github.gabrielbb.algorithms.assignments.chapter5.BinaryToString;
+import com.github.gabrielbb.algorithms.assignments.chapter5.FlipBitToWin;
 import com.github.gabrielbb.algorithms.assignments.chapter5.Insertion;
 
 import org.junit.Test;
@@ -31,4 +32,9 @@ public class Chapter5Test {
         assertEquals("0.101", BinaryToString.convert(0.625));
     }
 
+    @Test
+    public void flipBitToWin() {
+        assertEquals(1, FlipBitToWin.findLongest1Sequence(5));
+        assertEquals(8, FlipBitToWin.findLongest1Sequence(1775));
+    }
 }
