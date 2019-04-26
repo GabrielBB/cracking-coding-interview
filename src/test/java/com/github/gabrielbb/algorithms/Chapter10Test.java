@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 
 import com.github.gabrielbb.algorithms.assignments.chapter10.GroupAnagrams;
+import com.github.gabrielbb.algorithms.assignments.chapter10.RankStream;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedMatrixSearch;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedMerge;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedSearchNoSize;
@@ -69,5 +70,16 @@ public class Chapter10Test {
         assertArrayEquals(new int[] { 0, 0 }, SortedMatrixSearch.search(matrix, 1));
         assertArrayEquals(null, SortedMatrixSearch.search(matrix, 8));
         assertArrayEquals(null, SortedMatrixSearch.search(matrix, -1));
+    }
+
+    @Test
+    public void testRankStream() {
+
+        var stream = new RankStream();
+        stream.track(5, 1, 4, 4, 5, 9, 7, 13, 3);
+
+        assertEquals(0, stream.getRankOfNumber(1));
+        assertEquals(1, stream.getRankOfNumber(3));
+        assertEquals(3, stream.getRankOfNumber(4)); 
     }
 }
