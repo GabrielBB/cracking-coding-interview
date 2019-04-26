@@ -4,25 +4,27 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
+import com.github.gabrielbb.structures.BinaryTreeNode;
+
 public class BinaryTree<T> {
 
-    public Node<T> root;
+    public BinaryTreeNode<T> root;
     private int count;
     private Random random = new Random();
 
-    public BinaryTree(Node<T> root) {
+    public BinaryTree(BinaryTreeNode<T> root) {
         this.root = root;
     }
 
-    public Node<T> getRandomNode() {
-        Queue<Node<T>> queue = new LinkedList<>();
+    public BinaryTreeNode<T> getRandomNode() {
+        Queue<BinaryTreeNode<T>> queue = new LinkedList<>();
         queue.add(root);
 
         int curr = 0;
         int index = random.nextInt(count);
 
         while (true) {
-            Node<T> currentNode = queue.remove();
+            BinaryTreeNode<T> currentNode = queue.remove();
 
             if (curr == index) {
                 return currentNode;
@@ -37,13 +39,13 @@ public class BinaryTree<T> {
         }
     }
 
-    public void insert(Node<T> node) {
-        Queue<Node<T>> queue = new LinkedList<>();
+    public void insert(BinaryTreeNode<T> node) {
+        Queue<BinaryTreeNode<T>> queue = new LinkedList<>();
         queue.add(root);
 
         while (!queue.isEmpty()) {
 
-            Node<T> currentNode = queue.remove();
+            BinaryTreeNode<T> currentNode = queue.remove();
 
             if (currentNode.left == null) {
                 currentNode.left = node;
@@ -62,20 +64,5 @@ public class BinaryTree<T> {
         count++;
     }
 
-    public static class Node<T> {
-
-        public Node<T> left;
-        public Node<T> right;
-        public Node<T> parent;
-        public T data;
-        public boolean visited;
-
-        public Node() {
-
-        }
-
-        public Node(T data) {
-            this.data = data;
-        }
-    }
+    
 }

@@ -1,10 +1,12 @@
-package com.github.gabrielbb.algorithms.assignments.chapter10;
+package com.github.gabrielbb.algorithms.assignments.chapter10.rankstream.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RankStream {
+import com.github.gabrielbb.algorithms.assignments.chapter10.rankstream.IRank;
+
+public class ArrayRank implements IRank {
 
     private final List<Integer> data = new ArrayList<>();
 

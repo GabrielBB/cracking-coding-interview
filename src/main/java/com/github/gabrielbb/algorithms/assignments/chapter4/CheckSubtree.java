@@ -1,10 +1,10 @@
 package com.github.gabrielbb.algorithms.assignments.chapter4;
 
-import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
+import com.github.gabrielbb.structures.BinaryTreeNode;
 
 public class CheckSubtree {
 
-    public static boolean isSubtree(BinaryTree.Node<Integer> t1, BinaryTree.Node<Integer> t2) {
+    public static boolean isSubtree(BinaryTreeNode<Integer> t1, BinaryTreeNode<Integer> t2) {
 
         var t1String = new StringBuilder();
         var t2String = new StringBuilder();
@@ -15,7 +15,7 @@ public class CheckSubtree {
         return t1String.toString().contains(t2String);
     }
 
-    private static void printNode(BinaryTree.Node<Integer> node, StringBuilder builder) {
+    private static void printNode(BinaryTreeNode<Integer> node, StringBuilder builder) {
 
         if (node == null) {
             builder.append("null");

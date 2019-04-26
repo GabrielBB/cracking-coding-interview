@@ -2,7 +2,8 @@ package com.github.gabrielbb.algorithms;
 
 import com.github.gabrielbb.algorithms.assignments.chapter4.*;
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
-import com.github.gabrielbb.algorithms.assignments.chapter4.models.Graph.Node;
+import com.github.gabrielbb.structures.Graph.Node;
+import com.github.gabrielbb.structures.BinaryTreeNode;
 
 import org.junit.Test;
 
@@ -44,10 +45,10 @@ public class Chapter4Test {
 
     @Test
     public void testListOfDepths() {
-        BinaryTree.Node<Integer> root = new BinaryTree.Node<>(1);
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
 
-        var second = new BinaryTree.Node<>(2);
-        var third = new BinaryTree.Node<>(3);
+        var second = new BinaryTreeNode<>(2);
+        var third = new BinaryTreeNode<>(3);
         second.left = third;
         second.right = third;
 
@@ -60,9 +61,9 @@ public class Chapter4Test {
 
     @Test
     public void testCheckBalanced() {
-        var tree = new BinaryTree<>(new BinaryTree.Node<>(1));
-        var second = new BinaryTree.Node<>(2);
-        var third = new BinaryTree.Node<>(3);
+        var tree = new BinaryTree<>(new BinaryTreeNode<>(1));
+        var second = new BinaryTreeNode<>(2);
+        var third = new BinaryTreeNode<>(3);
 
         second.left = third;
         second.right = third;
@@ -72,27 +73,27 @@ public class Chapter4Test {
 
         assertTrue(CheckBalanced.isBalanced(tree));
 
-        var third2 = new BinaryTree.Node<>(3);
-        var forth = new BinaryTree.Node<>(4);
+        var third2 = new BinaryTreeNode<>(3);
+        var forth = new BinaryTreeNode<>(4);
         third2.left = forth;
         second.right = third2;
 
         assertTrue(CheckBalanced.isBalanced(tree));
 
-        forth.right = new BinaryTree.Node<>(5);
+        forth.right = new BinaryTreeNode<>(5);
         assertFalse(CheckBalanced.isBalanced(tree));
     }
 
     @Test
     public void testBST() {
-        var tree = new BinaryTree<>(new BinaryTree.Node<>(8));
-        var second = new BinaryTree.Node<>(5);
-        var third = new BinaryTree.Node<>(10);
+        var tree = new BinaryTree<>(new BinaryTreeNode<>(8));
+        var second = new BinaryTreeNode<>(5);
+        var third = new BinaryTreeNode<>(10);
         tree.root.left = second;
         tree.root.right = third;
 
-        second.left = new BinaryTree.Node<>(4);
-        second.right = new BinaryTree.Node<>(6);
+        second.left = new BinaryTreeNode<>(4);
+        second.right = new BinaryTreeNode<>(6);
 
         assertTrue(ValidateBST.isBST(tree));
     }
@@ -127,10 +128,10 @@ public class Chapter4Test {
 
     @Test
     public void testCheckSubtree() {
-        BinaryTree.Node<Integer> root = new BinaryTree.Node<>(1);
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(1);
 
-        var second = new BinaryTree.Node<>(2);
-        var third = new BinaryTree.Node<>(3);
+        var second = new BinaryTreeNode<>(2);
+        var third = new BinaryTreeNode<>(3);
         second.left = third;
         second.right = third;
 

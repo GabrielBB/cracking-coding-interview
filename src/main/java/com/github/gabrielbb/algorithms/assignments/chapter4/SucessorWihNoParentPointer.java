@@ -1,17 +1,18 @@
 package com.github.gabrielbb.algorithms.assignments.chapter4;
 
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
+import com.github.gabrielbb.structures.BinaryTreeNode;
 
 public class SucessorWihNoParentPointer {
 
-    private static BinaryTree.Node<Integer> lastSucessor;
+    private static BinaryTreeNode<Integer> lastSucessor;
 
-    public static BinaryTree.Node<Integer> getSucessor(BinaryTree<Integer> tree, BinaryTree.Node<Integer> targetNode) {
+    public static BinaryTreeNode<Integer> getSucessor(BinaryTree<Integer> tree, BinaryTreeNode<Integer> targetNode) {
         getSucessor(tree.root, targetNode);
         return lastSucessor;
     }
 
-    public static void getSucessor(BinaryTree.Node<Integer> current, BinaryTree.Node<Integer> target) {
+    public static void getSucessor(BinaryTreeNode<Integer> current, BinaryTreeNode<Integer> target) {
 
         if (current == null)
             return;

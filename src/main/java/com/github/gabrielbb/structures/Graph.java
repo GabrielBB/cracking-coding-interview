@@ -1,4 +1,4 @@
-package com.github.gabrielbb.algorithms.assignments.chapter4.models;
+package com.github.gabrielbb.structures;
 
 import java.util.ArrayList;
 import java.util.List;

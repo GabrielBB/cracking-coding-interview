@@ -1,6 +1,7 @@
 package com.github.gabrielbb.algorithms.assignments.chapter4;
 
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
+import com.github.gabrielbb.structures.BinaryTreeNode;
 
 public class ValidateBST {
 
@@ -8,7 +9,7 @@ public class ValidateBST {
         return isBSTNode(tree.root, null, null);
     }
 
-    private static boolean isBSTNode(BinaryTree.Node<Integer> node, Integer min, Integer max) {
+    private static boolean isBSTNode(BinaryTreeNode<Integer> node, Integer min, Integer max) {
 
         if (node == null)
             return true;

@@ -3,14 +3,14 @@ package com.github.gabrielbb.algorithms.assignments.chapter4;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
+import com.github.gabrielbb.structures.BinaryTreeNode;
 
 public class PathsWithSum {
 
-    public static int getPathCount(BinaryTree.Node<Integer> root, int value) {
+    public static int getPathCount(BinaryTreeNode<Integer> root, int value) {
 
         int paths = 0;
-        Queue<BinaryTree.Node<Integer>> queue = new LinkedList<>();
+        Queue<BinaryTreeNode<Integer>> queue = new LinkedList<>();
 
         while (!queue.isEmpty()) {
 
@@ -30,7 +30,7 @@ public class PathsWithSum {
         return paths;
     }
 
-    private static boolean isValueOnPath(BinaryTree.Node<Integer> node, int sum, int value) {
+    private static boolean isValueOnPath(BinaryTreeNode<Integer> node, int sum, int value) {
 
         if (node != null) {
 

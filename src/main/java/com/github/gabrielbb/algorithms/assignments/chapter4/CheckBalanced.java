@@ -1,7 +1,7 @@
 package com.github.gabrielbb.algorithms.assignments.chapter4;
 
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
-import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree.Node;
+import com.github.gabrielbb.structures.BinaryTreeNode;
 
 public class CheckBalanced {
 
@@ -16,7 +16,7 @@ public class CheckBalanced {
         return search(tree.root, 0);
     }
 
-    private static boolean search(Node<Integer> node, int depth) {
+    private static boolean search(BinaryTreeNode<Integer> node, int depth) {
 
         if (node == null) {
 

@@ -1,6 +1,7 @@
 package com.github.gabrielbb.algorithms.assignments.chapter4;
 
 import com.github.gabrielbb.algorithms.assignments.chapter4.models.BinaryTree;
+import com.github.gabrielbb.structures.BinaryTreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -37,7 +38,7 @@ public class TreeSearch {
         return sequences;
     }
 
-    private static void depthSearch(BinaryTree.Node<Integer> node, BSTSequenceType type) {
+    private static void depthSearch(BinaryTreeNode<Integer> node, BSTSequenceType type) {
         if (node == null)
             return;
 
@@ -52,13 +53,13 @@ public class TreeSearch {
         }
     }
 
-    private static void breadthSearch(BinaryTree.Node<Integer> root, BSTSequenceType type) {
-        final Queue<BinaryTree.Node<Integer>> queue = new LinkedList<>();
+    private static void breadthSearch(BinaryTreeNode<Integer> root, BSTSequenceType type) {
+        final Queue<BinaryTreeNode<Integer>> queue = new LinkedList<>();
         root.visited = true;
         queue.add(root);
 
         while (!queue.isEmpty()) {
-            BinaryTree.Node<Integer> node = queue.remove();
+            BinaryTreeNode<Integer> node = queue.remove();
 
             if (node == null)
                 continue;

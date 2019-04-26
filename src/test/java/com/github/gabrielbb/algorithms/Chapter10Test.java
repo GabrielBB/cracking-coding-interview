@@ -6,12 +6,13 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 
 import com.github.gabrielbb.algorithms.assignments.chapter10.GroupAnagrams;
-import com.github.gabrielbb.algorithms.assignments.chapter10.RankStream;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedMatrixSearch;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedMerge;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedSearchNoSize;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SparseSearch;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedSearchNoSize.Listy;
+import com.github.gabrielbb.algorithms.assignments.chapter10.rankstream.IRank;
+import com.github.gabrielbb.algorithms.assignments.chapter10.rankstream.impl.ArrayRank;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -75,7 +76,7 @@ public class Chapter10Test {
     @Test
     public void testRankStream() {
 
-        var stream = new RankStream();
+        IRank stream = new ArrayRank();
         stream.track(5, 1, 4, 4, 5, 9, 7, 13, 3);
 
         assertEquals(0, stream.getRankOfNumber(1));

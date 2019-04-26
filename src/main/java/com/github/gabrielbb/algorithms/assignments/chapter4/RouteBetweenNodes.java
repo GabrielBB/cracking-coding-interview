@@ -2,7 +2,7 @@ package com.github.gabrielbb.algorithms.assignments.chapter4;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import com.github.gabrielbb.algorithms.assignments.chapter4.models.Graph.Node;
+import com.github.gabrielbb.structures.Graph.Node;
 
 public class RouteBetweenNodes {
 

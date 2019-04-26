@@ -1,6 +1,6 @@
 package com.github.gabrielbb.algorithms.assignments.chapter4;
 
-import com.github.gabrielbb.algorithms.assignments.chapter4.models.Graph;
+import com.github.gabrielbb.structures.Graph;
 
 import java.util.HashMap;
 import java.util.LinkedList;
