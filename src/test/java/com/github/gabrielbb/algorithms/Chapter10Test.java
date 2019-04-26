@@ -1,8 +1,12 @@
 package com.github.gabrielbb.algorithms;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 
 import com.github.gabrielbb.algorithms.assignments.chapter10.GroupAnagrams;
+import com.github.gabrielbb.algorithms.assignments.chapter10.SortedMatrixSearch;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedMerge;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedSearchNoSize;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SparseSearch;
@@ -31,7 +35,7 @@ public class Chapter10Test {
 
         SortedMerge.sort(a, b);
 
-        Assert.assertArrayEquals(a, sorted);
+        assertArrayEquals(a, sorted);
     }
 
     @Test
@@ -43,16 +47,27 @@ public class Chapter10Test {
 
     @Test
     public void testSortedSearchNoSize() {
-        Assert.assertEquals(3, SortedSearchNoSize.search(new Listy(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }), 3));
-        Assert.assertEquals(5,
+        assertEquals(3, SortedSearchNoSize.search(new Listy(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }), 3));
+        assertEquals(5,
                 SortedSearchNoSize.search(new Listy(new int[] { 0, 10000, 100000, 200000, 200000, 300000 }), 300000));
-        Assert.assertEquals(3,
+        assertEquals(3,
                 SortedSearchNoSize.search(new Listy(new int[] { 0, 10000, 100000, 200000, 200000, 300000 }), 200000));
     }
 
     @Test
     public void testSparseSearch() {
-        Assert.assertEquals(4, SparseSearch.findString("ball",
+        assertEquals(4, SparseSearch.findString("ball",
                 new String[] { "at", "", "", "", "ball", "", "", "car", "", "", "dad", "", "" }));
+    }
+
+    @Test
+    public void testSortedMatrixSearch() {
+        int[][] matrix = new int[][] { new int[] { 1, 2, 2, 4 }, new int[] { 2, 2, 4, 5 }, new int[] { 3, 4, 5, 6 }, new int[] { 4, 5, 6, 7 }};
+
+        assertArrayEquals(new int[] { 2, 0 }, SortedMatrixSearch.search(matrix, 3));
+        assertArrayEquals(new int[] { 3, 3 }, SortedMatrixSearch.search(matrix, 7));
+        assertArrayEquals(new int[] { 0, 0 }, SortedMatrixSearch.search(matrix, 1));
+        assertArrayEquals(null, SortedMatrixSearch.search(matrix, 8));
+        assertArrayEquals(null, SortedMatrixSearch.search(matrix, -1));
     }
 }
