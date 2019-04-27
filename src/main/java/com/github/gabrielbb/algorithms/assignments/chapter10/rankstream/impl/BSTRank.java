@@ -24,13 +24,10 @@ public class BSTRank implements IRank {
 
                 newNode.parent = node;
 
-                if (num == node.data) {
-                    node.count++;
-                    node = null;
-                } else if (num > node.data) {
+                if (num > node.data) {
                     if (node.right == null) {
                         node.right = newNode;
-                        newNode.rank = node.getRealRank() + 1;
+                        newNode.rank = node.rank + 1;
                         node = null;
                     } else {
                         node = node.right;
@@ -57,7 +54,7 @@ public class BSTRank implements IRank {
         while (node != null) {
 
             if (num == node.data)
-                return node.getRealRank();
+                return node.rank;
 
             node = num > node.data ? node.right : node.left;
         }
