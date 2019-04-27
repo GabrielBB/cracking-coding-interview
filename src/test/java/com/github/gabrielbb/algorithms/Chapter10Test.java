@@ -13,6 +13,7 @@ import com.github.gabrielbb.algorithms.assignments.chapter10.SparseSearch;
 import com.github.gabrielbb.algorithms.assignments.chapter10.SortedSearchNoSize.Listy;
 import com.github.gabrielbb.algorithms.assignments.chapter10.rankstream.IRank;
 import com.github.gabrielbb.algorithms.assignments.chapter10.rankstream.impl.ArrayRank;
+import com.github.gabrielbb.algorithms.assignments.chapter10.rankstream.impl.BSTRank;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -75,8 +76,11 @@ public class Chapter10Test {
 
     @Test
     public void testRankStream() {
+        testRankStream(new ArrayRank());
+        testRankStream(new BSTRank());
+    }
 
-        IRank stream = new ArrayRank();
+    private void testRankStream(IRank stream) {
         stream.track(5, 1, 4, 4, 5, 9, 7, 13, 3);
 
         assertEquals(0, stream.getRankOfNumber(1));
