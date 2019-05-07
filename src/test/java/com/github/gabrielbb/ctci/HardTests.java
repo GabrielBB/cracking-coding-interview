@@ -1,12 +1,14 @@
 package com.github.gabrielbb.ctci;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.github.gabrielbb.ctci.hard.AddWithoutPlus;
+import com.github.gabrielbb.ctci.hard.RandomSet;
 import com.github.gabrielbb.ctci.hard.Shuffle;
 
 import org.junit.Test;
@@ -26,7 +28,7 @@ public class HardTests {
     public void testShuffle() {
         int[] cards = new int[52];
 
-        for(int i = 0; i < cards.length; i++) {
+        for (int i = 0; i < cards.length; i++) {
             cards[i] = i;
         }
 
@@ -36,5 +38,20 @@ public class HardTests {
         Arrays.stream(cards).forEach(set::add);
 
         assertEquals(cards.length, set.size());
+    }
+
+    @Test
+    public void testRandomSet() {
+        testRandomSet(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 9);
+        testRandomSet(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 1);
+        testRandomSet(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 4);
+    }
+
+    private void testRandomSet(int[] array, int subsetLength) {
+        int[] subset = RandomSet.generateSubSet(array, subsetLength);
+
+        assertEquals(subsetLength, subset.length);
+
+        Arrays.stream(subset).forEach(n -> assertNotEquals(0, n));
     }
 }
