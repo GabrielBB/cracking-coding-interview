@@ -1,5 +1,6 @@
 package com.github.gabrielbb.ctci;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -8,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.github.gabrielbb.ctci.hard.AddWithoutPlus;
+import com.github.gabrielbb.ctci.hard.LettersAndNumbers;
 import com.github.gabrielbb.ctci.hard.RandomSet;
 import com.github.gabrielbb.ctci.hard.Shuffle;
 
@@ -53,5 +55,15 @@ public class HardTests {
         assertEquals(subsetLength, subset.length);
 
         Arrays.stream(subset).forEach(n -> assertNotEquals(0, n));
+    }
+
+    @Test
+    public void testLettersAndNumbers() {
+        assertArrayEquals(new int[] { 1, 8 },
+                LettersAndNumbers.getLongestSubArray(new char[] { 'a', 'a', '1', 'a', '1', 'a', '1', 'a', '1' }));
+        assertArrayEquals(new int[] { 1, 4 },
+                LettersAndNumbers.getLongestSubArray(new char[] { 'a', 'a', '1', 'a', '1' }));
+
+        assertArrayEquals(new int[] { 0, 0 }, LettersAndNumbers.getLongestSubArray(new char[] { '1', '1', '1', '1', }));
     }
 }
