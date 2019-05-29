@@ -1,16 +1,16 @@
 package com.github.gabrielbb.practicing;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.EmptyStackException;
-import java.util.Scanner;
-
 import com.github.gabrielbb.practicing.codecompilation.CodeCompiler;
 import com.github.gabrielbb.practicing.codecompilation.FailedCompilationException;
 import com.github.gabrielbb.practicing.structures.Stack;
 import com.github.gabrielbb.practicing.structures.impl.StackImpl;
-
 import org.junit.Test;
+
+import java.util.EmptyStackException;
+import java.util.Objects;
+import java.util.Scanner;
+
+import static org.junit.Assert.assertEquals;
 
 public class PracticingTests {
 
@@ -59,9 +59,7 @@ public class PracticingTests {
     @Test
     public void testArrayManipulation() {
 
-        var scanner = new Scanner(getClass().getClassLoader().getResourceAsStream("array_manipulation_test_case.txt"));
-
-        try {
+        try (var scanner = new Scanner(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("array_manipulation_test_case.txt")))) {
             String[] nm = scanner.nextLine().split(" ");
 
             int n = Integer.parseInt(nm[0]);
@@ -81,8 +79,6 @@ public class PracticingTests {
             }
 
             assertEquals(2497169732L, ArrayManipulation.arrayManipulation(n, queries));
-        } finally {
-            scanner.close();
         }
     }
 }
