@@ -22,7 +22,7 @@ public class NonDivisibleSubset {
         int removed = 0;
 
         if(!divisibles.isEmpty()) {
-            Map.Entry<Integer, List<Integer>> maxLinked = divisibles.entrySet().iterator().next();
+            Map.Entry<Integer, List<Integer>> maxLinked = null;
             boolean updated = true;
 
             while(updated) {
@@ -30,13 +30,13 @@ public class NonDivisibleSubset {
 
                 for (Map.Entry<Integer, List<Integer>> entry : divisibles.entrySet()) {
 
-                    if(!entry.getValue().isEmpty() && entry.getValue().size() > maxLinked.getValue().size()) {
+                    if(maxLinked == null || entry.getValue().size() > maxLinked.getValue().size()) {
                         maxLinked = entry;
                         updated = true;
                     }
                 }
 
-                if(updated) {
+                if(maxLinked != null) {
                     for(Integer dependency : maxLinked.getValue()) {
                         List<Integer> links = divisibles.get(dependency);
                         links.remove(maxLinked.getKey());
@@ -47,6 +47,7 @@ public class NonDivisibleSubset {
                     }
 
                     divisibles.remove(maxLinked.getKey());
+                    maxLinked = null;
                     removed++;
                 }
             }
@@ -56,16 +57,17 @@ public class NonDivisibleSubset {
     }
 
     private static void linkNumbers(int[] S, Map<Integer, List<Integer>> divisibles, int i, int b) {
-        if(!divisibles.containsKey(S[i])) {
-            List<Integer> links = new LinkedList<>();
-            links.add(S[b]);
+        List<Integer> links = divisibles.get(S[i]);
+
+        if(links == null) {
+            links = new LinkedList<>();
             divisibles.put(S[i], links);
-        } else {
-            divisibles.get(S[i]).add(S[b]);
         }
+
+        links.add(S[b]);
     }
 
-    private static final Scanner scanner = new Scanner("15 7\n278 576 496 727 410 124 338 149 209 702 282 718 771 575 436");
+    private static final Scanner scanner = new Scanner("10 5\n770528134 663501748 384261537 800309024 103668401 538539662 385488901 101262949 557792122 46058493");
 
     public static void main(String[] args) {
         String[] nk = scanner.nextLine().split(" ");
