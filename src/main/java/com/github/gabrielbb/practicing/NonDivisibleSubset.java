@@ -7,67 +7,67 @@ public class NonDivisibleSubset {
     // Complete the nonDivisibleSubset function below.
     private static int nonDivisibleSubset(int k, int[] S) {
 
-        Map<Integer, List<Integer>> divisibles = new HashMap<>();
+        List<Integer>[] divisibles = new List[S.length];
 
-        for(int i = 0; i < S.length - 1; i++) {
+        for(int i = 0; i < S.length; i++) {
 
+            int value = S[i];
+            List<Integer> links = divisibles[i];
+        
+            if(links == null) {
+                links = new LinkedList<>();
+                divisibles[i] = links;
+            }
+            
             for(int b = i + 1; b < S.length; b++) {
-                if((S[i] + S[b]) % k == 0) {
-                    linkNumbers(S, divisibles, i, b);
-                    linkNumbers(S, divisibles, b, i);
+                
+                if((value + S[b]) % k == 0) {
+                    List<Integer> bLinks = divisibles[b];
+
+                    if(bLinks == null) {
+                        bLinks = new LinkedList<>();
+                        divisibles[b] = bLinks;
+                    }
+
+                    bLinks.add(i);
+                    links.add(b);
                 }
             }
         }
 
         int removed = 0;
+        Integer maxLinked = null;
 
-        if(!divisibles.isEmpty()) {
-            Map.Entry<Integer, List<Integer>> maxLinked = null;
-            boolean updated = true;
+        boolean updated = true;
 
             while(updated) {
                 updated = false;
 
-                for (Map.Entry<Integer, List<Integer>> entry : divisibles.entrySet()) {
+                for(int i = 0; i < divisibles.length; i++) {
+                    List<Integer> links = divisibles[i];
 
-                    if(maxLinked == null || entry.getValue().size() > maxLinked.getValue().size()) {
-                        maxLinked = entry;
+                    if(!links.isEmpty() && (maxLinked == null || links.size() > divisibles[maxLinked].size())) {
+                        maxLinked = i;
                         updated = true;
                     }
                 }
-
-                if(maxLinked != null) {
-                    for(Integer dependency : maxLinked.getValue()) {
-                        List<Integer> links = divisibles.get(dependency);
-                        links.remove(maxLinked.getKey());
-
-                        if(links.isEmpty()) {
-                            divisibles.remove(dependency);
-                        }
+    
+                if(maxLinked != null ) {
+                    for(Integer dependency : divisibles[maxLinked]) {
+                        List<Integer> links = divisibles[dependency];
+                        links.remove(maxLinked);
                     }
 
-                    divisibles.remove(maxLinked.getKey());
+                    divisibles[maxLinked].clear();
                     maxLinked = null;
                     removed++;
                 }
             }
-        }
 
         return S.length - removed;
     }
 
-    private static void linkNumbers(int[] S, Map<Integer, List<Integer>> divisibles, int i, int b) {
-        List<Integer> links = divisibles.get(S[i]);
-
-        if(links == null) {
-            links = new LinkedList<>();
-            divisibles.put(S[i], links);
-        }
-
-        links.add(S[b]);
-    }
-
-    private static final Scanner scanner = new Scanner("10 5\n770528134 663501748 384261537 800309024 103668401 538539662 385488901 101262949 557792122 46058493");
+    private static final Scanner scanner = new Scanner("15 7\n278 576 496 727 410 124 338 149 209 702 282 718 771 575 436");
 
     public static void main(String[] args) {
         String[] nk = scanner.nextLine().split(" ");
