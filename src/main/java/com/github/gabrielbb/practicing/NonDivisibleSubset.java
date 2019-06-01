@@ -6,48 +6,34 @@ public class NonDivisibleSubset {
 
     // Complete the nonDivisibleSubset function below.
     private static int nonDivisibleSubset(int k, int[] S) {
-
-        Map<Integer, List<Integer>> divisibles = new HashMap<>();
-
-        for(int i = 0; i < S.length - 1; i++) {
-
-            for(int b = i + 1; b < S.length; b++) {
-                if((S[i] + S[b]) % k == 0) {
-                    linkNumbers(S, divisibles, i, b);
-                    linkNumbers(S, divisibles, b, i);
-                }
-            }
+        
+        if(k == 1) {
+            return 1;
         }
 
+        int[] reminders = new int[k];
         int removed = 0;
 
-        if(!divisibles.isEmpty()) {
-            Map.Entry<Integer, List<Integer>> maxLinked = divisibles.entrySet().iterator().next();
-            boolean updated = true;
+        for(int i = 0; i < S.length; i++) {
+            reminders[S[i] % k]++;
+        }
 
-            while(updated) {
-                updated = false;
+        for(int i = k - 1; i >= 0; i--) {
+            int iReminders = reminders[i];
 
-                for (Map.Entry<Integer, List<Integer>> entry : divisibles.entrySet()) {
+            if(iReminders > 0) {
 
-                    if(!entry.getValue().isEmpty() && entry.getValue().size() > maxLinked.getValue().size()) {
-                        maxLinked = entry;
-                        updated = true;
+                if((i == k - i || i == 0) & iReminders > 1) {
+                    removed+= iReminders - 1;
+                    reminders[i] = 0;
+                } else {
+                    int icomplementaries = reminders[k - i];
+
+                    if(icomplementaries > 0) {
+                        removed+= Math.min(iReminders, icomplementaries);
+                        reminders[i] = 0;
+                        reminders[k - i] = 0;
                     }
-                }
-
-                if(updated) {
-                    for(Integer dependency : maxLinked.getValue()) {
-                        List<Integer> links = divisibles.get(dependency);
-                        links.remove(maxLinked.getKey());
-
-                        if(links.isEmpty()) {
-                            divisibles.remove(dependency);
-                        }
-                    }
-
-                    divisibles.remove(maxLinked.getKey());
-                    removed++;
                 }
             }
         }
@@ -55,17 +41,7 @@ public class NonDivisibleSubset {
         return S.length - removed;
     }
 
-    private static void linkNumbers(int[] S, Map<Integer, List<Integer>> divisibles, int i, int b) {
-        if(!divisibles.containsKey(S[i])) {
-            List<Integer> links = new LinkedList<>();
-            links.add(S[b]);
-            divisibles.put(S[i], links);
-        } else {
-            divisibles.get(S[i]).add(S[b]);
-        }
-    }
-
-    private static final Scanner scanner = new Scanner("15 7\n278 576 496 727 410 124 338 149 209 702 282 718 771 575 436");
+    private static final Scanner scanner = new Scanner("10 4\n1 2 3 4 5 6 7 8 9 10");
 
     public static void main(String[] args) {
         String[] nk = scanner.nextLine().split(" ");
