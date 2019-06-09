@@ -1,3 +1,3 @@
 # cracking-coding-interview
 
-Some of my solutions to Cracking The Coding Interview book exercises. All of the exercises have a proper unit test
+Some of my solutions to Cracking The Coding Interview book exercises. Every exercise has a proper unit test and well structured by chapter
