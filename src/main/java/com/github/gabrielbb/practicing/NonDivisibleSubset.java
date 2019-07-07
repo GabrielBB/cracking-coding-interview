@@ -5,7 +5,7 @@ import java.util.*;
 public class NonDivisibleSubset {
 
     // Complete the nonDivisibleSubset function below.
-    private static int nonDivisibleSubset(int k, int[] S) {
+    /*private static int nonDivisibleSubset(int k, int[] S) {
         
         if(k == 1) {
             return 1;
@@ -75,5 +75,5 @@ public class NonDivisibleSubset {
         System.out.println("Result = " + result);
 
         scanner.close();
-    }
+    }*/
 }
