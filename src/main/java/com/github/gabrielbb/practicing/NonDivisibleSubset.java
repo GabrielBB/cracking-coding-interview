@@ -6,68 +6,34 @@ public class NonDivisibleSubset {
 
     // Complete the nonDivisibleSubset function below.
     private static int nonDivisibleSubset(int k, int[] S) {
+        
+        if(k == 1) {
+            return 1;
+        }
 
-        List<Integer>[] divisibles = new List[S.length];
+        int removed = 0;
+        boolean[] blacklist = new boolean[S.length];
 
         for(int i = 0; i < S.length; i++) {
-
-            int value = S[i];
-            List<Integer> links = divisibles[i];
-        
-            if(links == null) {
-                links = new LinkedList<>();
-                divisibles[i] = links;
-            }
             
-            for(int b = i + 1; b < S.length; b++) {
+            if (!blacklist[i]) {
+                for(int b = i + 1; b < S.length; b++) {
                 
-                if((value + S[b]) % k == 0) {
-                    List<Integer> bLinks = divisibles[b];
+                if(!blacklist[b] && (S[i] + S[b]) % k == 0) {
+                    removed++;
+                    blacklist[b] = true;
 
-                    if(bLinks == null) {
-                        bLinks = new LinkedList<>();
-                        divisibles[b] = bLinks;
+                    System.out.println("Found " + S[i] + " and " + S[b]);
+                    break;
                     }
-
-                    bLinks.add(i);
-                    links.add(b);
                 }
             }
         }
 
-        int removed = 0;
-        Integer maxLinked = null;
-
-        boolean updated = true;
-
-            while(updated) {
-                updated = false;
-
-                for(int i = 0; i < divisibles.length; i++) {
-                    List<Integer> links = divisibles[i];
-
-                    if(!links.isEmpty() && (maxLinked == null || links.size() > divisibles[maxLinked].size())) {
-                        maxLinked = i;
-                        updated = true;
-                    }
-                }
-    
-                if(maxLinked != null ) {
-                    for(Integer dependency : divisibles[maxLinked]) {
-                        List<Integer> links = divisibles[dependency];
-                        links.remove(maxLinked);
-                    }
-
-                    divisibles[maxLinked].clear();
-                    maxLinked = null;
-                    removed++;
-                }
-            }
-
         return S.length - removed;
     }
 
-    private static final Scanner scanner = new Scanner("15 7\n278 576 496 727 410 124 338 149 209 702 282 718 771 575 436");
+    private static final Scanner scanner = new Scanner("10 4\n1 2 3 4 5 6 7 8 9 10");
 
     public static void main(String[] args) {
         String[] nk = scanner.nextLine().split(" ");
