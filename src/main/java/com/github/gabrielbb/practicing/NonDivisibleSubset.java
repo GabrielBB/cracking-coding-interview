@@ -11,6 +11,7 @@ public class NonDivisibleSubset {
             return 1;
         }
 
+        int[] reminders = new int[k];
         int removed = 0;
         boolean[] blacklist = new boolean[S.length];
 
@@ -23,8 +24,25 @@ public class NonDivisibleSubset {
                     removed++;
                     blacklist[b] = true;
 
-                    System.out.println("Found " + S[i] + " and " + S[b]);
-                    break;
+        for(int i = 0; i < S.length; i++) {
+            reminders[S[i] % k]++;
+        }
+
+        for(int i = k - 1; i >= 0; i--) {
+            int iReminders = reminders[i];
+
+            if(iReminders > 0) {
+
+                if((i == k - i || i == 0) & iReminders > 1) {
+                    removed+= iReminders - 1;
+                    reminders[i] = 0;
+                } else {
+                    int icomplementaries = reminders[k - i];
+
+                    if(icomplementaries > 0) {
+                        removed+= Math.min(iReminders, icomplementaries);
+                        reminders[i] = 0;
+                        reminders[k - i] = 0;
                     }
                 }
             }
